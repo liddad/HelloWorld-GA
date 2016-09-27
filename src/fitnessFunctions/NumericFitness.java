@@ -2,11 +2,16 @@ package fitnessFunctions;
 
 public class NumericFitness implements FitnessFunction{
 
-	public int fitnessFunction(char[] array){
+	private boolean[] target;
+	
+	public NumericFitness(boolean[] target){
+		this.target = target;
+	}
+	
+	public int fitnessFunction(boolean[] array){
 		int correct = 0;
-		char[] helloworld = ("Hello World!").toCharArray();
-		for(int i = 0; i<helloworld.length; i++){
-			if(helloworld[i]==array[i]){
+		for(int i = 0; i<target.length; i++){
+			if(target[i]==array[i]){
 				correct++;
 			}
 		}
