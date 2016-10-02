@@ -16,7 +16,7 @@ public class Population {
 	public SortedMap<Integer, boolean[]> fitnessMap;
 	
 	public Population(List<boolean[]> population, FitnessFunction fitnessFunction){
-		population = new ArrayList<boolean[]>();
+		this.population = population;
 		this.fitnessFunction = fitnessFunction;
 		rankIndividuals();
 	}
@@ -34,8 +34,8 @@ public class Population {
 	}
 	
 	public Population generation(SelectionMethod selectionMethod, CrossoverMethod crossoverMethod){
-		List<boolean[]> parents = selectionMethod.selectParents(this, fitnessFunction);
-		return crossoverMethod.crossover(new Population(parents, fitnessFunction));
+		Population parents = selectionMethod.selectParents(this);
+		return crossoverMethod.crossover(parents);
 	}
 	
 	private void rankIndividuals() {
