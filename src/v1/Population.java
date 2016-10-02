@@ -18,10 +18,10 @@ public class Population {
 	public Population(List<boolean[]> population, FitnessFunction fitnessFunction){
 		this.population = population;
 		this.fitnessFunction = fitnessFunction;
-		rankIndividuals();
 	}
 
 	public SortedMap<Integer, boolean[]> getFitnessMap(){
+		rankIndividuals();
 		return new TreeMap<Integer,boolean[]>(fitnessMap);
 	}
 	

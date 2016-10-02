@@ -16,7 +16,7 @@ public class EvolutionStarter {
 		int cycles = 0;
 		int lastMax = 0;
 		int populationSize = 10000;
-		boolean[] targetString = TargetCreator.getBooleanArray("Hello World!");
+		boolean[] targetString = TargetCreator.getBooleanArray("Hi");
 		System.out.println(targetString.length);
 		
 		FitnessFunction fitnessFunction = new NumericFitness(targetString);
