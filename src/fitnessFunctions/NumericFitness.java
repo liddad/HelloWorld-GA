@@ -1,17 +1,19 @@
 package fitnessFunctions;
 
+import java.util.List;
+
 public class NumericFitness implements FitnessFunction{
 
-	private boolean[] target;
+	private List<Boolean> target;
 	
-	public NumericFitness(boolean[] target){
-		this.target = target;
+	public NumericFitness(List<Boolean> b1){
+		this.target = b1;
 	}
 	
-	public int fitnessFunction(boolean[] array){
+	public int fitnessFunction(List<Boolean> array){
 		int correct = 0;
-		for(int i = 0; i<target.length; i++){
-			if(target[i]==array[i]){
+		for(int i = 0; i<array.size(); i++){
+			if(target.get(i).equals(array.get(i))){
 				correct++;
 			}
 		}

@@ -1,7 +1,9 @@
 package v1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -11,22 +13,17 @@ import selectionMethods.SelectionMethod;
 
 public class Population {
 	
-	public List<boolean[]> population;
+	public List<List<Boolean>> population;
 	public FitnessFunction fitnessFunction;
-	public SortedMap<Integer, boolean[]> fitnessMap;
+	public List<Boolean> fittest;
 	
-	public Population(List<boolean[]> population, FitnessFunction fitnessFunction){
+	public Population(List<List<Boolean>> population, FitnessFunction fitnessFunction){
 		this.population = population;
 		this.fitnessFunction = fitnessFunction;
 	}
-
-	public SortedMap<Integer, boolean[]> getFitnessMap(){
-		rankIndividuals();
-		return new TreeMap<Integer,boolean[]>(fitnessMap);
-	}
 	
-	public List<boolean[]> getPopulation(){
-		return new ArrayList<boolean[]>(population);
+	public List<List<Boolean>> getPopulation(){
+		return new ArrayList<List<Boolean>>(population);
 	}
 	
 	public FitnessFunction getFitnessFunction(){
@@ -38,10 +35,17 @@ public class Population {
 		return crossoverMethod.crossover(parents);
 	}
 	
-	private void rankIndividuals() {
-		fitnessMap = new TreeMap<Integer, boolean[]>();
-		for(boolean[] b: population){
-			fitnessMap.put(fitnessFunction.fitnessFunction(b), b);
+	public List<Boolean> getFittest() {
+		int maxFitness = 0;
+		int maxPos = 0;
+		int fitness;
+		for(int i=0; i<population.size();i++){
+			fitness = fitnessFunction.fitnessFunction(population.get(i));
+			if(fitness>maxFitness){
+				maxFitness = fitness;
+				maxPos = i;
+			}
 		}
+		return population.get(maxPos);
 	}
 }

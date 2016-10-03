@@ -14,17 +14,17 @@ public class RandomValueCreator {
 		random = new Random(System.nanoTime());
 	}
 	
-	private boolean[] getRandomBooleanArray(){
+	private List<Boolean> getRandomBooleanArray(){
 		random = new Random(System.nanoTime());
-		boolean[] array = new boolean[bits];
+		List<Boolean> array = new ArrayList<Boolean>();
 		for (int i = 0; i<bits; i++){
-			array[i]=random.nextBoolean();
+			array.add(random.nextBoolean());
 		}
 		return array;
 	}
 	
-	public List<boolean[]> getRandomPopulation(int populationSize){
-		ArrayList<boolean[]> population = new ArrayList<boolean[]>();
+	public List<List<Boolean>> getRandomPopulation(int populationSize){
+		ArrayList<List<Boolean>> population = new ArrayList<List<Boolean>>();
 		for(int i = 0; i<populationSize; i++){
 			population.add(getRandomBooleanArray());
 		}
