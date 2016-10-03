@@ -1,6 +1,5 @@
 package selectionMethods;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import fitnessFunctions.FitnessFunction;

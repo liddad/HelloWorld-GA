@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import fitnessFunctions.FitnessFunction;
 import v1.Population;
 
 public abstract class CrossoverMethod {

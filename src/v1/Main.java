@@ -172,6 +172,5 @@ public class Main {
 		
 		System.out.println("Hill Climber got the max possible value " + correct + "% of the time in an average of " + avgTime + " ns");
 		
-		
 	}
 }
