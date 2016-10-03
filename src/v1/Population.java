@@ -1,11 +1,7 @@
 package v1;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
 
 import crossoverMethods.CrossoverMethod;
 import fitnessFunctions.FitnessFunction;
@@ -13,9 +9,8 @@ import selectionMethods.SelectionMethod;
 
 public class Population {
 	
-	public List<List<Boolean>> population;
-	public FitnessFunction fitnessFunction;
-	public List<Boolean> fittest;
+	private List<List<Boolean>> population;
+	private FitnessFunction fitnessFunction;
 	
 	public Population(List<List<Boolean>> population, FitnessFunction fitnessFunction){
 		this.population = population;
@@ -31,7 +26,9 @@ public class Population {
 	}
 	
 	public Population generation(SelectionMethod selectionMethod, CrossoverMethod crossoverMethod){
+//		System.out.println("Avg: " + getAverageFitness(this));
 		Population parents = selectionMethod.selectParents(this);
+//		System.out.println("Avg after: " + getAverageFitness(parents));
 		return crossoverMethod.crossover(parents);
 	}
 	
@@ -47,5 +44,14 @@ public class Population {
 			}
 		}
 		return population.get(maxPos);
+	}
+	
+	private float getAverageFitness(Population p){
+		float avg = 0;
+		for(List<Boolean> b:p.getPopulation()){
+			avg+= p.getFitnessFunction().fitnessFunction(b);
+		}
+		avg = (float)avg / (float)p.getPopulation().size();
+		return avg;
 	}
 }

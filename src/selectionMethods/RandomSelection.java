@@ -2,12 +2,11 @@ package selectionMethods;
 
 import v1.Population;
 
-public class WeightedSelection implements SelectionMethod {
+public class RandomSelection implements SelectionMethod {
 
 	@Override
 	public Population selectParents(Population p) {
-		
-		return null;
+		return p;
 	}
 
 }

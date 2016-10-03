@@ -34,7 +34,7 @@ public class SelectionTests {
 	
 	@Test
 	public void testTournament() {
-		SelectionMethod s = new TournamentSelectionMethod();
+		SelectionMethod s = new TournamentSelectionMethod(2);
 		Population p = new Population(list, new NumericFitness(b));
 		float currentAvg = getAverageFitness(p);
 		for(int i = 0; i<4; i++){
